@@ -66,7 +66,7 @@ class UserLogin extends React.Component {
         <form onSubmit={this.handleSubmit} style={{padding:'15px 50px 50px 50px'}}>
   
             <div class="form-group">
-            <label for="name">Username/ Phone no:</label>
+            <label for="name">Username:</label>
             <input 
               type="text" 
               name="username" 
@@ -88,8 +88,7 @@ class UserLogin extends React.Component {
               id="password" 
             />
             <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.password}</div>
-            </div> 
-
+        </div>              
         <input type="submit" value="Continue" class="btn btn-success btn-lg btn-block" style={{height:'35px',fontSize:'13px'}}/>
         <Link to = "/UserSignup"><p style={{marginTop:'20px', color:'blue'}}>Don't have an account ? <b>Create One</b></p></Link>      
         </form>

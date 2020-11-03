@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import RCG from 'react-captcha-generator';
+import Captcha from '../../Captcha';
 
 class UserSignup extends React.Component {
     constructor() {
@@ -9,28 +9,12 @@ class UserSignup extends React.Component {
     this.state = {
       input: {},
       errors: {},
-      captcha: ''
     };
      
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.check = this.check.bind(this)
-    this.result = this.result.bind(this)
-    this.handleClick = this.handleClick.bind(this)
   }
-  handleClick(e) {
-    e.preventDefault();
-    this.check()
-  }
- 
-  result(text) {
-    this.setState({
-      captcha: text
-    })
-  }
-  check() {
-    console.log(this.state.captcha, this.captchaEnter.value, this.state.captcha === this.captchaEnter.value)
-  }
+
      
   handleChange(event) {
     let input = this.state.input;
@@ -50,6 +34,7 @@ class UserSignup extends React.Component {
         let input = {};
         input["name"] = "";
         input["email"] = "";
+        input["phone"] = "";
         input["password"] = "";
         input["confirm_password"] = "";
         this.setState({input:input});
@@ -72,7 +57,7 @@ class UserSignup extends React.Component {
         isValid = false;
         errors["email"] = "Please enter your email Address.";
       }
-  
+
       if (typeof input["email"] !== "undefined") {
           
         var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -81,7 +66,12 @@ class UserSignup extends React.Component {
           errors["email"] = "Please enter valid email address.";
         }
       }
-  
+      
+      if (!input["phone"]) {
+        isValid = false;
+        errors["phone"] = "Please enter your mobile number.";
+      }
+
       if (!input["password"]) {
         isValid = false;
         errors["password"] = "Please enter your password.";
@@ -140,6 +130,19 @@ class UserSignup extends React.Component {
   
               <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.email}</div>
               </div>
+
+            <div class="form-group">
+            <label for="phone">Phone no:</label>
+            <input 
+              type="text" 
+              name="phone" 
+              value={this.state.input.email}
+              onChange={this.handleChange}
+              class="form-control" 
+              id="phone" />
+  
+              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.phone}</div>
+              </div>
    
             <div class="form-group">
             <label for="password">Password:</label>
@@ -165,14 +168,12 @@ class UserSignup extends React.Component {
               id="confirm_password" />
               <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.confirm_password}</div>
              </div>
-            
-            <label for="password">Enter Captcha:</label>
-            <form onSubmit={this.handleClick}>
-            <input type='text' name="captcha" className={'xxx'} ref={ref => this.captchaEnter = ref} class="form-control"/>
-            <RCG result={this.result}/>
+
+             <div name="captcha">
+               <Captcha />
+             </div>
             <input type="submit" value="Continue" class="btn btn-success btn-lg btn-block" style={{height:'35px',fontSize:'13px'}}/>
             <Link to = "/UserLogin"><p style={{marginTop:'20px', color:'blue'}}>Sign in to an existing account</p></Link>
-            </form> 
         </form>
       </div>  
       </>
