@@ -8,8 +8,8 @@ import UserSignup from './components/userAuthentication/UserSignup';
 function App() {
   return (
     <div className="App" >
-      <div style={{height:'68px', backgroundColor:'#232f3e', borderBottom:'1px solid #363636', color:'#fff'}}>
-          <h4 style={{paddingLeft:'60px', paddingTop:'15px', fontWeight:'bold', fontStyle:'italic', fontFamily:'Helvetica Neue'}}>ALBENUS</h4>
+      <div style={{height:'60px', backgroundColor:'#232f3e', borderBottom:'1px solid #363636', color:'#fff'}}>
+          <h4 style={{paddingLeft:'60px', paddingTop:'15px', fontWeight:'bold', fontStyle:'italic'}}>ALBENUS</h4>
       </div>
       <div>
       <BrowserRouter>

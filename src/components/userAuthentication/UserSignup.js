@@ -100,82 +100,68 @@ class UserSignup extends React.Component {
   render() {
     return (
         <>
-        <h5 style={{marginTop:'20px', textAlign:'center', fontFamily:'Gill Sans, sans-serif'}}>Create Your New Account</h5>
-        <div className="container" style={{width:'400px', marginTop:'20px',borderTop:'2.5px solid red', backgroundColor:'#fff', fontFamily:'"Helvetica Neue",Helvetica,Arial,sans-serif', fontSize:'12px'}}>
-        <form onSubmit={this.handleSubmit} style={{padding:'15px 50px 50px 50px'}}>
-  
-            <div class="form-group">
-            <label for="name">Name:</label>
-            <input 
-              type="text" 
-              name="name" 
-              value={this.state.input.name}
-              onChange={this.handleChange}
-              class="form-control" 
-              id="name" />
-              
-  
-              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.name}</div>
+        <div class="top-content" style={{fontSize:'12px',paddingTop:'20px',fontFamily:'Verdana, Geneva, sans-serif'}}> 	
+          <div class="">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-7" style={{marginTop:'150px', fontFamily:''}}>
+                          <h2><strong>My Learning Point</strong></h2><h4><span> (India) Ltd.</span></h4><br />
+                          <h5 style={{textAlign:'center', textDecoration:'underline', color:'green'}}>Explore us More !!</h5>
+                          <div class="description">
+                            <p>
+                             My Learning Point originated from the idea that there exists a class of readers who respond better to online content and prefer 
+                            <a href=""><strong></strong></a>, to learn new skills at their own pace from the comforts of their drawing rooms...   .
+                            </p>
+                          </div>                
+                      </div>
+                      <div class="col-sm-4 form-box">
+                        <div class="form-top">
+                          <div class="form-top-left">
+                            <p style={{fontSize:'20px'}}>Sign up </p>
+                              <p >Fill in the form below to get <br />instant access:</p>
+                          </div>
+                          <div class="form-top-right">
+                            <i class="fa fa-pencil"></i>
+                          </div>
+                          </div>
+                          <div class="form-bottom" style={{backgroundColor:'#fff', borderTop:'2px solid red'}}>
+                        <form onSubmit={this.handleSubmit} value={this.state.input.name} role="form" action="" method="post" class="registration-form">
+                          <div class="form-group">
+                            <label class="sr-only" for="form-Name">Name</label>
+                              <input type="text" onChange={this.handleChange} name="name" placeholder=" Name..." class="form-name form-control" id="form-name" />
+                              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.name}</div>
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-Mobile-No">MobileNo</label>
+                              <input type="text" onChange={this.handleChange} value={this.state.input.phone} name="phone" placeholder="MobileNo..." class="form-Mobile-No form-control" id="form-Mobile-no" /> 
+                              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.phone}</div>
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-email">Email</label>
+                              <input type="text" onChange={this.handleChange} value={this.state.input.email} name="email" placeholder="Email..." class="form-email form-control" id="form-email" />
+                              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.email}</div>
+                            </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-password">password</label>
+                              <input type="password" onChange={this.handleChange} value={this.state.input.password} name="password" placeholder="password..." class="form-password form-control" id="form-password" />
+                              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.password}</div>
+                          </div>
+                            <div class="form-group">
+                              <label class="sr-only" for="form-confirmpassword">confirmpassword</label>
+                              <input type="password" onChange={this.handleChange} value={this.state.input.confirm_password} name="confirm_password" placeholder="confirmpassword..." class="form-email form-control" id="form-confirmpassword" />
+                              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.confirm_password}</div>
+                          </div>
+                          <input type="submit" value="Continue" class="btn btn-success btn-lg btn-block" style={{height:'30px',fontSize:'12px'}}/>
+                          <Link to = "/UserLogin"><p style={{marginTop:'20px', color:'blue'}}>Sign in to an existing account</p></Link>
+                        </form>
+                      </div>
+                      </div>
+                      <div class="col-sm-1">
+                    </div>
+                  </div>
               </div>
-  
-            <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input 
-              type="text" 
-              name="email" 
-              value={this.state.input.email}
-              onChange={this.handleChange}
-              class="form-control" 
-              id="email" />
-  
-              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.email}</div>
-              </div>
-
-            <div class="form-group">
-            <label for="phone">Phone no:</label>
-            <input 
-              type="text" 
-              name="phone" 
-              value={this.state.input.email}
-              onChange={this.handleChange}
-              class="form-control" 
-              id="phone" />
-  
-              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.phone}</div>
-              </div>
-   
-            <div class="form-group">
-            <label for="password">Password:</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={this.state.input.password}
-              onChange={this.handleChange}
-              class="form-control" 
-              id="password" />
-  
-              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.password}</div>
-             </div>
-
-            <div class="form-group">
-            <label for="password">Confirm Password:</label>
-            <input 
-              type="password" 
-              name="confirm_password" 
-              value={this.state.input.confirm_password}
-              onChange={this.handleChange}
-              class="form-control" 
-              id="confirm_password" />
-              <div className="text-danger" style={{fontStyle:'italic', fontFamily:'Helvetica Neue'}}>{this.state.errors.confirm_password}</div>
-             </div>
-
-             <div name="captcha">
-               <Captcha />
-             </div>
-            <input type="submit" value="Continue" class="btn btn-success btn-lg btn-block" style={{height:'35px',fontSize:'13px'}}/>
-            <Link to = "/UserLogin"><p style={{marginTop:'20px', color:'blue'}}>Sign in to an existing account</p></Link>
-        </form>
-      </div>  
+          </div>          
+      </div> 
       </>
     );
   }
