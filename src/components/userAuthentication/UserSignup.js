@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import {API} from '../../Config'
+
 import Captcha from '../../Captcha';
 
 class UserSignup extends React.Component {
@@ -13,6 +15,8 @@ class UserSignup extends React.Component {
      
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signup = this.signup.bind(this);
+
   }
 
      
@@ -24,9 +28,29 @@ class UserSignup extends React.Component {
       input
     });
   }
-     
+    
+
+  signup(user){
+     console.log(user)
+    fetch(` ${API}/signup`,{
+        method: "POST",
+        headers: {
+             Accept: "application/json",
+             "Content-type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+    .then( response => {
+        return response.json()
+    })
+    .catch( err => {
+        console.log(err)
+    })
+ }
+
   handleSubmit(event) {
     event.preventDefault();
+    
   
     if(this.validate()){
         console.log(this.state);
@@ -40,6 +64,7 @@ class UserSignup extends React.Component {
         this.setState({input:input});
   
         alert('Registration Successful !!');
+        this.signup(this.state.input)
     }
   }
   
